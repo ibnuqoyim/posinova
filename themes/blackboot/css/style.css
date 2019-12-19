@@ -83,7 +83,6 @@ fieldset {
 }
 form label{
 float: left;
-width: 140px;
 padding-top: 5px;
 text-align: right;
 }
