@@ -18,19 +18,21 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	<div class="col-lg-12">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'category_name'); ?>
+				<?php echo $form->textField($model,'category_name',array('class'=>'form-control'),array('size'=>60,'maxlength'=>250)); ?>
+				<?php echo $form->error($model,'category_name'); ?>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'category_name'); ?>
-		<?php echo $form->textField($model,'category_name',array('size'=>60,'maxlength'=>250)); ?>
-		<?php echo $form->error($model,'category_name'); ?>
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'category_status'); ?>
+				<?php echo $form->textField($model,'category_status',array('class'=>'form-control'),array('size'=>1,'maxlength'=>1)); ?>
+				<?php echo $form->error($model,'category_status'); ?>
+			</div>
+		</div>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'category_status'); ?>
-		<?php echo $form->textField($model,'category_status',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'category_status'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

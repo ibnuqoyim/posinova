@@ -28,7 +28,7 @@
 
 			<div class="form-group">
 				<?php echo $form->labelEx($model,'category_id'); ?>
-				<?php echo $form->textField($model,'category_id',array('class'=>'form-control')); ?>
+				<?php echo $form->dropDownList($model, 'category_id', CHtml::listData(Category::model()->findAll(), 'category_id', 'category_name'), array('empty' => 'Pilih satu..','class'=>'form-control')); ?>
 				<?php echo $form->error($model,'category_id'); ?>
 			</div>
 

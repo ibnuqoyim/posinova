@@ -24,7 +24,7 @@ $this->menu=array(
 		'user_id',
 		'user_foto',
 		'username',
-		'user_username',
+		'fullname',
 		'password',
 		'salt_password',
 		'user_level',

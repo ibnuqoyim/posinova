@@ -28,6 +28,6 @@ $this->menu=array(
 		'product_images',
 		'product_stock',
 		'product_date',
-		'category_id',
+		'kategori.category_name',
 	),
 )); ?>

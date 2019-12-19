@@ -64,6 +64,7 @@ class ProductController extends Controller
 	public function actionCreate()
 	{
 		$model=new Product;
+		$category = Category::model()->findAll();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -71,12 +72,14 @@ class ProductController extends Controller
 		if(isset($_POST['Product']))
 		{
 			$model->attributes=$_POST['Product'];
+			date_default_timezone_set("Asia/Jakarta");
+			$model->product_date= date("Y-m-d H:i:s");
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->product_id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'category'=>$category,
 		));
 	}
 
