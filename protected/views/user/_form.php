@@ -20,12 +20,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'user_foto'); ?>
-		<?php echo $form->textArea($model,'user_foto',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'user_foto'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'username'); ?>
@@ -43,22 +37,11 @@
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'salt_password'); ?>
-		<?php echo $form->textField($model,'salt_password'); ?>
-		<?php echo $form->error($model,'salt_password'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'user_level'); ?>
 		<?php echo $form->textField($model,'user_level',array('size'=>60,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'user_level'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_create_date'); ?>
-		<?php echo $form->textField($model,'user_create_date'); ?>
-		<?php echo $form->error($model,'user_create_date'); ?>
 	</div>
 
 	<div class="row">

@@ -7,27 +7,21 @@ $this->breadcrumbs=array(
 	$model->product_id,
 );
 
-$this->menu=array(
-	array('label'=>'List Product', 'url'=>array('index')),
-	array('label'=>'Create Product', 'url'=>array('create')),
-	array('label'=>'Update Product', 'url'=>array('update', 'id'=>$model->product_id)),
-	array('label'=>'Delete Product', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->product_id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Product', 'url'=>array('admin')),
-);
+
 ?>
+<div class="container">
+<h1><?php echo $model->product_name; ?></h1>
 
-<h1>View Product #<?php echo $model->product_id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'product_id',
-		'product_name',
-		'product_price',
-		'product_desc',
-		'product_images',
-		'product_stock',
-		'product_date',
-		'category_id',
-	),
-)); ?>
+
+	<div class="detail-produk">
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/product/<?php	echo $model->product_images; ?>" alt="<?php	echo $model->product_name; ?>">
+ 
+            
+            <h5>Rp 150.000,-</h5><?php echo CHtml::link('Beli', array('/orders/create/'.$model->product_id),array('class'=>'tombol tombol-beli')); ?>
+ 
+            
+            
+    </div>
+ </div> 
+

@@ -32,8 +32,8 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_username, password, salt_password, user_level, user_status', 'required'),
-			array('salt_password', 'numerical', 'integerOnly'=>true),
+			array('user_username, password, user_level', 'required'),
+			//array('salt_password', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>255),
 			array('user_username', 'length', 'max'=>40),
 			array('password', 'length', 'max'=>250),
@@ -66,11 +66,9 @@ class User extends CActiveRecord
 			'user_id' => 'User',
 			'user_foto' => 'User Foto',
 			'username' => 'Username',
-			'user_username' => 'User Username',
+			'user_username' => 'Name',
 			'password' => 'Password',
-			'salt_password' => 'Salt Password',
 			'user_level' => 'User Level',
-			'user_create_date' => 'User Create Date',
 			'user_status' => 'User Status',
 		);
 	}
@@ -94,13 +92,10 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('user_foto',$this->user_foto,true);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('user_username',$this->user_username,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('salt_password',$this->salt_password);
 		$criteria->compare('user_level',$this->user_level,true);
-		$criteria->compare('user_create_date',$this->user_create_date,true);
 		$criteria->compare('user_status',$this->user_status,true);
 
 		return new CActiveDataProvider($this, array(

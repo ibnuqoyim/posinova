@@ -37,7 +37,7 @@ class UserController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -60,7 +60,8 @@ class UserController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	
+		public function actionCreate()
 	{
 		$model=new User;
 
@@ -70,6 +71,12 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
+                        $isinya=$this->generateSalt();
+                        $dua=$model->password;
+                        $model->salt_password=$isinya;
+                        $model->password=$this->hashPassword($dua,$isinya);
+
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->user_id));
 		}
@@ -78,6 +85,7 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
+	
 
 	/**
 	 * Updates a particular model.
@@ -87,6 +95,7 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+                $modeledit = new UserEdit;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -94,12 +103,24 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
+                        $modeledit->attributes=$_POST['UserEdit'];
+                        if($model->validate()){
+                            if($modeledit->validate()){
+                                if(!empty ($modeledit->password)){
+                                    $enkripsi=$this->generateSalt();
+                                    $password=$modeledit->password;
+                                    $model->password=$this->hashPassword($password,$enkripsi);
+                                    $model->salt_password=$enkripsi;
+                                }
+                            }
+                        }
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->user_id));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'modeledit' => $modeledit,
 		));
 	}
 

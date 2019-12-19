@@ -22,13 +22,12 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'user_id',
-		'user_foto',
+
 		'username',
 		'user_username',
-		'password',
-		'salt_password',
+
 		'user_level',
-		'user_create_date',
+
 		'user_status',
 	),
 )); ?>

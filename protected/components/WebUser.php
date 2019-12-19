@@ -24,6 +24,18 @@ class WebUser extends CWebUser {
            return $user->user_level=='admin';
         return false;
     }
+    public function getisKasir(){
+        $user = $this->loadUser(Yii::app()->user->id);
+        if ($user)
+           return $user->user_level=='kasir';
+        return false;
+    }
+    public function getisPelanggan(){
+        $user = $this->loadUser(Yii::app()->user->id);
+        if ($user)
+           return $user->user_level=='pelanggan';
+        return false;
+    }
     
     
  
