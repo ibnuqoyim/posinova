@@ -24,8 +24,9 @@ $this->menu=array(
 		'user_id',
 
 		'username',
-		'user_username',
 
+		'fullname',
+		
 		'user_level',
 
 		'user_status',

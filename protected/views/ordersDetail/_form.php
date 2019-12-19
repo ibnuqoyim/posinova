@@ -18,23 +18,26 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	<div class="col-lg-12">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'id_orders'); ?>
+				<?php echo $form->textField($model,'id_orders',array('class'=>'form-control')); ?>
+				<?php echo $form->error($model,'id_orders'); ?>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_orders'); ?>
-		<?php echo $form->textField($model,'id_orders'); ?>
-		<?php echo $form->error($model,'id_orders'); ?>
-	</div>
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'product_id'); ?>
+				<?php echo $form->textField($model,'product_id',array('class'=>'form-control')); ?>
+				<?php echo $form->error($model,'product_id'); ?>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'product_id'); ?>
-		<?php echo $form->textField($model,'product_id'); ?>
-		<?php echo $form->error($model,'product_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'jumlah'); ?>
-		<?php echo $form->textField($model,'jumlah'); ?>
-		<?php echo $form->error($model,'jumlah'); ?>
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'jumlah'); ?>
+				<?php echo $form->textField($model,'jumlah',array('class'=>'form-control')); ?>
+				<?php echo $form->error($model,'jumlah'); ?>
+			</div>
+		</div>
 	</div>
 
 	<div class="row buttons">

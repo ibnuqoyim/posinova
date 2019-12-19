@@ -70,6 +70,7 @@ class CartController extends Controller
 		if(isset($_POST['Cart']))
 		{
 			$model->attributes=$_POST['Cart'];
+			$model->cart_date= date("Y-m-d",time());
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->cart_id));
 		}

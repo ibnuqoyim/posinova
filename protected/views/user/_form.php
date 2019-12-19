@@ -18,38 +18,40 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	<div class="col-lg-12">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'username'); ?>
+				<?php echo $form->textField($model,'username',array('class'=>'form-control'),array('size'=>60,'maxlength'=>255)); ?>
+				<?php echo $form->error($model,'username'); ?>
+			</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'username'); ?>
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'fullname'); ?>
+				<?php echo $form->textField($model,'fullname',array('class'=>'form-control'),array('size'=>40,'maxlength'=>40)); ?>
+				<?php echo $form->error($model,'fullname'); ?>
+			</div>
+
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'password'); ?>
+				<?php echo $form->passwordField($model,'password',array('class'=>'form-control'),array('size'=>60,'maxlength'=>250)); ?>
+				<?php echo $form->error($model,'password'); ?>
+			</div>
+
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'user_level'); ?>
+				<?php echo $form->textField($model,'user_level',array('class'=>'form-control'),array('size'=>60,'maxlength'=>200)); ?>
+				<?php echo $form->error($model,'user_level'); ?>
+			</div>
+
+
+			<div class="form-group">
+				<?php echo $form->labelEx($model,'user_status'); ?>
+				<?php echo $form->textField($model,'user_status',array('class'=>'form-control'),array('size'=>1,'maxlength'=>1)); ?>
+				<?php echo $form->error($model,'user_status'); ?>
+			</div>
+		</div>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_username'); ?>
-		<?php echo $form->textField($model,'user_username',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'user_username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>250)); ?>
-		<?php echo $form->error($model,'password'); ?>
-	</div>
-
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_level'); ?>
-		<?php echo $form->textField($model,'user_level',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'user_level'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_status'); ?>
-		<?php echo $form->textField($model,'user_status',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'user_status'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

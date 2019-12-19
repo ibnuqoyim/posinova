@@ -71,11 +71,12 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-                        $isinya=$this->generateSalt();
-                        $dua=$model->password;
-                        $model->salt_password=$isinya;
-                        $model->password=$this->hashPassword($dua,$isinya);
 
+            $isinya=$this->generateSalt();
+            $dua=$model->password;
+            $model->salt_password=$isinya;
+            $model->password=$this->hashPassword($dua,$isinya);
+			$model->user_create_date= date("Y-m-d",time());
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->user_id));

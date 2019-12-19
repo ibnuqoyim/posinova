@@ -25,3 +25,16 @@ $this->breadcrumbs=array(
     </div>
  </div> 
 
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'product_id',
+		'product_name',
+		'product_price',
+		'product_desc',
+		'product_images',
+		'product_stock',
+		'product_date',
+		'kategori.category_name',
+	),
+)); ?>

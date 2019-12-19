@@ -60,7 +60,7 @@ return array(
 		),
 
 		'db'=>array(
-			'initSQLs'=>array("set time_zone='+07:00';"),
+			'initSQLs'=>array("set time_zone='+09:00';"),
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
 		// uncomment the following to use a MySQL database
@@ -98,6 +98,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'23513018@std.stei.itb.ac.id',
+		'adminEmail'=>'18212007@std.stei.itb.ac.id',
 	),
 );

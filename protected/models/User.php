@@ -7,7 +7,7 @@
  * @property integer $user_id
  * @property string $user_foto
  * @property string $username
- * @property string $user_username
+ * @property string $fullname
  * @property string $password
  * @property integer $salt_password
  * @property string $user_level
@@ -32,17 +32,20 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_username, password, user_level', 'required'),
+
+			
 			//array('salt_password', 'numerical', 'integerOnly'=>true),
+			array('fullname, password, user_level, user_status', 'required'),
+			array('salt_password', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>255),
-			array('user_username', 'length', 'max'=>40),
+			array('fullname', 'length', 'max'=>40),
 			array('password', 'length', 'max'=>250),
 			array('user_level', 'length', 'max'=>200),
 			array('user_status', 'length', 'max'=>1),
 			array('user_foto, user_create_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, user_foto, username, user_username, password, salt_password, user_level, user_create_date, user_status', 'safe', 'on'=>'search'),
+			array('user_id, user_foto, username, fullname, password, salt_password, user_level, user_create_date, user_status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,7 +69,7 @@ class User extends CActiveRecord
 			'user_id' => 'User',
 			'user_foto' => 'User Foto',
 			'username' => 'Username',
-			'user_username' => 'Name',
+			'fullname' => 'Nama Lengkap',
 			'password' => 'Password',
 			'user_level' => 'User Level',
 			'user_status' => 'User Status',
@@ -93,7 +96,7 @@ class User extends CActiveRecord
 
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('username',$this->username,true);
-		$criteria->compare('user_username',$this->user_username,true);
+		$criteria->compare('fullname',$this->fullname,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('user_level',$this->user_level,true);
 		$criteria->compare('user_status',$this->user_status,true);

@@ -15,7 +15,7 @@ return array(
 		'db'=>array(
 	         'class'=>'CDbConnection',
 	         'charset' => 'utf8',
-	         'connectionString'=>'mysql:host=localhost;dbname=mzdb',
+	         'connectionString'=>'mysql:host=localhost;dbname=db_pos',
     		 'username'=>'root',
     		 'password'=>''
 		),
