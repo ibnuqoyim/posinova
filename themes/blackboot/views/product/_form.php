@@ -40,9 +40,9 @@
 		</div>
 		<div class="col-lg-6">
 			<div class="form-group">
-				<?php echo $form->labelEx($model,'product_desc'); ?>
-				<?php echo $form->textArea($model,'product_desc',array('class'=>'form-control'),array('rows'=>6, 'cols'=>50)); ?>
-				<?php echo $form->error($model,'product_desc'); ?>
+				<?php echo $form->labelEx($model,'product_code'); ?>
+				<?php echo $form->textArea($model,'product_code',array('class'=>'form-control'),array('rows'=>6, 'cols'=>50)); ?>
+				<?php echo $form->error($model,'product_code'); ?>
 			</div>
 
 			<div class="form-group">

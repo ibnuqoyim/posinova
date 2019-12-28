@@ -37,7 +37,7 @@ $('.search-form form').submit(function(){
 		'product_id',
 		'product_name',
 		'product_price',
-		'product_desc',
+		'product_code',
 		'product_images',
 		'product_stock',
 		/*

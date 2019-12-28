@@ -27,7 +27,7 @@ class OrdersDetail extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_orders, product_id, jumlah', 'required'),
+			//array('id_orders, product_id, jumlah', 'required'),
 			array('id_orders, product_id, jumlah', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -43,6 +43,7 @@ class OrdersDetail extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'produk' => array(self::BELONGS_TO, 'Product', 'product_id'),
 		);
 	}
 
@@ -57,6 +58,12 @@ class OrdersDetail extends CActiveRecord
 			'product_id' => 'Product',
 			'jumlah' => 'Jumlah',
 		);
+	}
+
+	public function searchDetail($id_orders)
+	{
+		$sql='select * from orders_detail where id_orders ='.$id_orders ;
+		return new CSqlDataProvider($sql);
 	}
 
 	/**

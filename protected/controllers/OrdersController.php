@@ -28,7 +28,7 @@ class OrdersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','deleteOrders'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -36,7 +36,7 @@ class OrdersController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','deleteOrders','ordersDetail'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -56,30 +56,59 @@ class OrdersController extends Controller
 		));
 	}
 
+	public function actionDeleteOrders($id)
+	{
+		$model = OrdersDetail::model()->findByPk($id);
+
+		$model->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+		$this->redirect(array('ordersDetail','id_orders'=>$model->id_orders));
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
+		
 		$model=new Orders;
-		//$produk = Product::Model()->findAll('id_product='.$id_product);
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$model->nama_petugas=Yii::app()->user->name;
+		$model->tgl_order= date("Y-m-d",time());
+		$model->save();
+		
+		
+		$this->redirect(array('ordersDetail','id_orders'=>$model->id_orders));
+	}
 
-		if(isset($_POST['Orders']))
+	public function actionOrdersDetail($id_orders)
+	{
+		$modelDetail = new OrdersDetail;
+		$detail=OrdersDetail::model()->findAllByAttributes(array('id_orders'=>$id_orders),array('order'=>'id DESC'));
+		$model=Orders::model()->findByPk($id_orders);
+		$produk = [];
+		if(isset($_POST['OrdersDetail']))
 		{
-			$model->attributes=$_POST['Orders'];
-			$model->tgl_order= date("Y-m-d",time());
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_orders));
-		}
+			$modelDetail->attributes=$_POST['OrdersDetail'];
+			$modelDetail->jumlah = 1;
+			$modelDetail->save();
+			
+			$detail=OrdersDetail::model()->findAllByAttributes(array('id_orders'=>$modelDetail->id_orders),array('order'=>'id DESC'));
+			$model=Orders::model()->findByPk($modelDetail->id_orders);
+			$produk=OrdersDetail::model()->findAllByAttributes(array('product_id'=>$modelDetail->product_id,'id_orders'=>$modelDetail->id_orders));
+			
+			if($modelDetail->save())
+				//$this->redirect(array('ordersDetail','id_orders'=>$modelDetail->id_orders));
+				$this->render('createDetail',array(
+				'modelDetail'=>$modelDetail,  'model'=>$model, 'detail'=>$detail, 'produk'=>$produk,
+			));	
+		}else{
 
+		$this->render('createDetail',array(
+			'modelDetail'=>$modelDetail,  'model'=>$model,'detail'=>$detail, 'produk'=>$produk,
 
-		$this->render('create',array(
-			'model'=>$model, //'produk' => $produk 
-
-		));
+		));}
 	}
 
 	/**
@@ -125,9 +154,10 @@ class OrdersController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model = '';
 		$dataProvider=new CActiveDataProvider('Orders');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dataProvider, 'model'=>$model,
 		));
 	}
 

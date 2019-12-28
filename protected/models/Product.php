@@ -7,7 +7,7 @@
  * @property string $product_id
  * @property string $product_name
  * @property integer $product_price
- * @property string $product_desc
+ * @property string $product_code
  * @property string $product_images
  * @property integer $product_stock
  * @property string $product_date
@@ -33,10 +33,10 @@ class Product extends CActiveRecord
 		return array(
 			array('product_price, product_stock, category_id', 'numerical', 'integerOnly'=>true),
 			array('product_name', 'length', 'max'=>100),
-			array('product_desc, product_images, product_date', 'safe'),
+			array('product_code, product_images, product_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('product_id, product_name, product_price, product_desc, product_images, product_stock, product_date, category_id', 'safe', 'on'=>'search'),
+			array('product_id, product_name, product_price, product_code, product_images, product_stock, product_date, category_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +61,7 @@ class Product extends CActiveRecord
 			'product_id' => 'Product',
 			'product_name' => 'Product Name',
 			'product_price' => 'Product Price',
-			'product_desc' => 'Product Desc',
+			'product_code' => 'Product Code',
 			'product_images' => 'Product Images',
 			'product_stock' => 'Product Stock',
 			'product_date' => 'Product Date',
@@ -90,7 +90,7 @@ class Product extends CActiveRecord
 		$criteria->compare('product_id',$this->product_id,true);
 		$criteria->compare('product_name',$this->product_name,true);
 		$criteria->compare('product_price',$this->product_price);
-		$criteria->compare('product_desc',$this->product_desc,true);
+		$criteria->compare('product_code',$this->product_code,true);
 		$criteria->compare('product_images',$this->product_images,true);
 		$criteria->compare('product_stock',$this->product_stock);
 		$criteria->compare('product_date',$this->product_date,true);

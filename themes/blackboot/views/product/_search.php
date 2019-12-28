@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'product_desc'); ?>
-		<?php echo $form->textArea($model,'product_desc',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'product_code'); ?>
+		<?php echo $form->textArea($model,'product_code',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">

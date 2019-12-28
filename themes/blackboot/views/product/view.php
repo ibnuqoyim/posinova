@@ -31,7 +31,7 @@ $this->breadcrumbs=array(
 		'product_id',
 		'product_name',
 		'product_price',
-		'product_desc',
+		'product_code',
 		'product_images',
 		'product_stock',
 		'product_date',

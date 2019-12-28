@@ -7,7 +7,6 @@
  * @property integer $id_orders
  * @property string $nama_petugas
  * @property string $tgl_order
- * @property string $jam_order
  */
 class Orders extends CActiveRecord
 {
@@ -27,11 +26,11 @@ class Orders extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama_petugas, tgl_order, jam_order', 'required'),
+			array('nama_petugas, tgl_order', 'required'),
 			array('nama_petugas', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_orders, nama_petugas, tgl_order, jam_order', 'safe', 'on'=>'search'),
+			array('id_orders, nama_petugas, tgl_order', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +54,6 @@ class Orders extends CActiveRecord
 			'id_orders' => 'Id Orders',
 			'nama_petugas' => 'Nama Petugas',
 			'tgl_order' => 'Tgl Order',
-			'jam_order' => 'Jam Order',
 		);
 	}
 
@@ -80,7 +78,6 @@ class Orders extends CActiveRecord
 		$criteria->compare('id_orders',$this->id_orders);
 		$criteria->compare('nama_petugas',$this->nama_petugas,true);
 		$criteria->compare('tgl_order',$this->tgl_order,true);
-		$criteria->compare('jam_order',$this->jam_order,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
